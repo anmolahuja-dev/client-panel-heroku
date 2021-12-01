@@ -8,8 +8,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 
 class Clients extends Component {
     render() {
-        const {clients}= this.props;
-
+        // const {clients}= this.props;
+        const clients = [{}];
         if(clients){
             return (
                 <div>
@@ -54,14 +54,15 @@ class Clients extends Component {
     }
 }
 
-Clients.propTypes={
-    firestore:PropTypes.object.isRequired,
-    clients:PropTypes.array
-}
+// Clients.propTypes={
+//     firestore:PropTypes.object.isRequired,
+//     clients:PropTypes.array
+// }
 
-export default compose(
-    firestoreConnect([{collection:'clients'}]),
-    connect((state,props)=>({
-        clients:state.firestore.ordered
-    }))
-)(Clients);
+// export default compose(
+//     firestoreConnect([{collection:'clients'}]),
+//     connect((state,props)=>({
+//         clients:state.firestore.ordered
+//     }))
+// )(Clients);
+export default Clients;
