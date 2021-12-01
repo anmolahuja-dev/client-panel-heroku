@@ -3,8 +3,12 @@ import Header from './components/layout/Header';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 import Dashboard from './components/layout/Dashboard';
 
+import {Provider} from 'react-redux';
+import store from './store';
+
 function App() {
   return (
+    <Provider store={store}>
     <Router>
       <div className="App">
         <Header/>
@@ -15,7 +19,7 @@ function App() {
         </div>
       </div>
     </Router>
-    
+    </Provider>
   );
 }
 
