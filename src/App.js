@@ -1,7 +1,9 @@
 import './App.css';
 import Header from './components/layout/Header';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
+
 import Dashboard from './components/layout/Dashboard';
+import AddClient from './components/clients/AddClient';
 
 import {Provider} from 'react-redux';
 import store from './store';
@@ -27,6 +29,7 @@ function App() {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={Dashboard}></Route>
+                <Route exact path="/clients/add" component={AddClient}></Route>
               </Switch>
             </div>
           </div>

@@ -1,15 +1,36 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 
+import Spinner from '../utilities/Spinner';
+
 class Clients extends Component {
+    state={
+        totalOwed:null
+    }
+
+    //This is the new way to get props after clients are fetched
+    static getDerivedStateFromProps(props, state) {
+        const {clients} = props;
+
+        if(clients){
+            //Add balance
+            const total = clients.reduce((total,client)=> {
+                return total + parseFloat(client.balance.toString());
+            },0);
+
+            return {totalOwed:total}
+        }
+
+        return null;
+    }
+
     render() {
-        // const {clients}= this.props;
-        const clients = [{}];
+        const {clients}= this.props;
         if(clients){
             return (
                 <div>
@@ -18,7 +39,12 @@ class Clients extends Component {
                             <h2><i className="fas fa-users"></i> Clients</h2>
                         </div>
                         <div className="col-md-6">
-
+                            <h5 classname="text-end text-secondary">
+                                Total Owed{' : '}
+                                <span className="text-primary">
+                                    ${this.state.totalOwed}
+                                </span>
+                            </h5>
                         </div>
                     </div>
                     <table className="table table-striped">
@@ -49,20 +75,24 @@ class Clients extends Component {
             )
         }
         else{
-            return <h1>loading....</h1>
+            return <Spinner></Spinner>
         }
     }
 }
 
-// Clients.propTypes={
-//     firestore:PropTypes.object.isRequired,
-//     clients:PropTypes.array
-// }
-
-// export default compose(
-//     firestoreConnect([{collection:'clients'}]),
-//     connect((state,props)=>({
-//         clients:state.firestore.ordered
-//     }))
-// )(Clients);
-export default Clients;
+Clients.propTypes={
+    firestore:PropTypes.object.isRequired,
+    clients:PropTypes.array
+}
+const mapStateToProps = state => {
+    const clients=state.firestore.ordered.clients;
+    return {
+        clients:clients
+    };
+}
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect(ownProps => [
+        {collection:'clients'} //this will automatically sync our clients collection to firebase state
+    ])
+)(Clients);
