@@ -1,8 +1,39 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { firebaseConnect } from 'react-redux-firebase';
+import PropTypes from 'prop-types';
+
 
 class Header extends Component {
+    state={
+        isAuthenticated : false
+    }
+
+    static getDerivedStateFromProps (props,state){
+        const {auth} = props;
+
+        if(auth.uid){
+            return{
+                isAuthenticated:true
+            }
+        }
+        else {
+            return {isAuthenticated:false
+        }}
+    }
+
+    onLogOutClick = e => {
+        e.preventDefault();
+
+        const {firebase} = this.props;
+        firebase.logout();
+    }
+
     render() {
+        const {isAuthenticated}= this.state;
+        const {auth} = this.props;
         return (
             <nav className="navbar navbar-expand-md navbar-dark bg-primary mb-4">
                 <div className="container">
@@ -17,12 +48,29 @@ class Header extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarMain">
                         <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <Link to="/" className="nav-link">
-                                    Dashboard
-                                </Link>
-                            </li>
+                            {isAuthenticated ? (
+                                <li className="nav-item">
+                                    <Link to="/" className="nav-link">
+                                        Dashboard
+                                    </Link>
+                                </li>
+                            ) : null}
                         </ul>
+                        {isAuthenticated ? (
+                            <ul className="navbar-nav ms-auto">
+                                <li className="nav-item">
+                                    <a href="#" className="nav-link">
+                                        {auth.email }
+                                    </a>
+                                </li>
+                                <li className="nav-item">
+                                    <a href="#" className="nav-link" onClick={this.onLogOutClick}>
+                                        Log Out
+                                    </a>
+                                </li>
+                            </ul>
+                            ) : null}
+                       
                     </div>
                 </div>
             </nav>
@@ -30,5 +78,16 @@ class Header extends Component {
     }
 }
 
+Header.propTypes = {
+    firebase:PropTypes.object.isRequired,
+    auth:PropTypes.object.isRequired
+}
 
-export default Header;
+const mapStateToProps=state=>({
+    auth:state.firebase.auth
+})
+
+export default compose(
+    connect(mapStateToProps),
+    firebaseConnect()
+)(Header);
