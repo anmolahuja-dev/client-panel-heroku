@@ -27,7 +27,9 @@ class Login extends Component {
                 email,
                 password
             }
-        ).catch(error => notifyUser('Invalid User Credentials','error'));
+        )
+        .then(()=> this.props.history.push('/dashboard'))
+        .catch(error => notifyUser('Invalid User Credentials','error'));
     }
 
     render() {

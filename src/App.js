@@ -36,8 +36,8 @@ function App() {
             <Header/>
             <div className="container">
               <Switch>
-                <Route exact path="/home" component={UserIsNotAuthenticated(HomePage)}/>
-                <Route exact path="/" component={UserIsAuthenticated(Dashboard)}></Route>
+                <Route exact path="/" component={UserIsNotAuthenticated(HomePage)}/>
+                <Route exact path="/dashboard" component={UserIsAuthenticated(Dashboard)}></Route>
                 <Route exact path="/login" component={UserIsNotAuthenticated(Login)}></Route>
                 <Route exact path="/register" component={UserIsNotAuthenticated(Register)}></Route>
                 <Route exact path="/clients/add" component={UserIsAuthenticated(AddClient)}></Route>

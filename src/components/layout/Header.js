@@ -38,7 +38,7 @@ class Header extends Component {
         return (
             <nav className="navbar navbar-expand-md navbar-dark bg-primary mb-4">
                 <div className="container">
-                    <Link to="/" className="navbar-brand">
+                    <Link to="/dashboard" className="navbar-brand">
                         ClientPanel
                     </Link>
                     <button className="navbar-toggler"
@@ -51,7 +51,7 @@ class Header extends Component {
                         <ul className="navbar-nav mr-auto">
                             {isAuthenticated ? (
                                 <li className="nav-item">
-                                    <Link to="/" className="nav-link">
+                                    <Link to="/dashboard" className="nav-link">
                                         Dashboard
                                     </Link>
                                 </li>

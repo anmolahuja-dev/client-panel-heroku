@@ -16,7 +16,7 @@ class Register extends Component {
         const { allowRegistration } = this.props.settings;
     
         if (!allowRegistration) {
-          this.props.history.push('/');
+          this.props.history.push('/dashboard');
         }
     }
 
@@ -35,7 +35,9 @@ class Register extends Component {
                 email,
                 password
             }
-        ).catch(error => notifyUser('User Already Registered','error'));
+        )
+        .then(()=> this.props.history.push('/dashboard'))
+        .catch(error => notifyUser('User Already Registered','error'));
     }
 
     render() {
