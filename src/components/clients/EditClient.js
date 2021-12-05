@@ -39,6 +39,7 @@ class EditClient extends Component {
 
     render() {
         const {client} = this.props;
+        const {disableBalanceOnEdit}=this.props.settings;
         if(client){
             return (
                 <div>
@@ -111,6 +112,7 @@ class EditClient extends Component {
                                     name="balance"
                                     defaultValue={client.balance}
                                     ref={this.balanceInput}
+                                    disabled={disableBalanceOnEdit}
                                 />
                             </div>
                             <input type="submit" value="Submit" className="btn btn-primary mt-2"/>
@@ -129,12 +131,14 @@ class EditClient extends Component {
 const mapStateToProps=(state)=>{
     const client=state.firestore.ordered.client &&state.firestore.ordered.client[0] ;
     return {
-        client:client
+        client:client,
+        settings:state.settings
     }  
 }
 
 EditClient.propTypes = {
-    firestore: PropTypes.object.isRequired
+    firestore: PropTypes.object.isRequired,
+    settings: PropTypes.object.isRequired
 }
 
 //here we are using props as we need an id from it

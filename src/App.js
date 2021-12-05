@@ -8,6 +8,8 @@ import AddClient from './components/clients/AddClient';
 import ClientDetails from './components/clients/ClientDetails';
 import EditClient from './components/clients/EditClient';
 import Login from './components/auth/Login';
+import Settings from './components/settings/Settings';
+import Register from './components/auth/Register';
 
 import {Provider} from 'react-redux';
 import store from './store';
@@ -35,8 +37,10 @@ function App() {
               <Switch>
                 <Route exact path="/" component={UserIsAuthenticated(Dashboard)}></Route>
                 <Route exact path="/login" component={UserIsNotAuthenticated(Login)}></Route>
+                <Route exact path="/register" component={UserIsNotAuthenticated(Register)}></Route>
                 <Route exact path="/clients/add" component={UserIsAuthenticated(AddClient)}></Route>
                 <Route exact path="/client/:id" component={UserIsAuthenticated(ClientDetails)}></Route>
+                <Route exact path="/settings" component={UserIsAuthenticated(Settings)}></Route>
                 <Route exact path="/client/edit/:id" component={UserIsAuthenticated(EditClient)}></Route>
               </Switch>
             </div>
