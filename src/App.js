@@ -17,6 +17,7 @@ import store from './store';
 import {ReactReduxFirebaseProvider} from 'react-redux-firebase';
 import firebase from './firebase.config';
 import { createFirestoreInstance } from 'redux-firestore';
+import HomePage from './components/layout/HomePage';
 
 
 const rrfProps = {
@@ -35,6 +36,7 @@ function App() {
             <Header/>
             <div className="container">
               <Switch>
+                <Route exact path="/home" component={UserIsNotAuthenticated(HomePage)}/>
                 <Route exact path="/" component={UserIsAuthenticated(Dashboard)}></Route>
                 <Route exact path="/login" component={UserIsNotAuthenticated(Login)}></Route>
                 <Route exact path="/register" component={UserIsNotAuthenticated(Register)}></Route>
