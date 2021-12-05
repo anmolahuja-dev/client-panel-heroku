@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 
 class Header extends Component {
     state={
-        isAuthenticated : false
+        isAuthenticated : false,
+        navbarToggle:true
     }
 
     static getDerivedStateFromProps (props,state){
@@ -31,23 +32,29 @@ class Header extends Component {
         firebase.logout();
     }
 
+    onNavToggleClick = e =>{
+        this.setState({
+            navbarToggle:!this.state.navbarToggle
+        });
+    }
+
     render() {
-        const {isAuthenticated}= this.state;
+        const {isAuthenticated,navbarToggle}= this.state;
         const {auth} = this.props;
         const {allowRegistration}= this.props.settings;
         return (
             <nav className="navbar navbar-expand-md navbar-dark bg-primary mb-4">
                 <div className="container">
-                    <Link to="/dashboard" className="navbar-brand">
+                    <Link to="/" className="navbar-brand">
                         ClientPanel
                     </Link>
                     <button className="navbar-toggler"
                         type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarMain">
-                            Dashboard 
+                        onClick={this.onNavToggleClick}    
+                    >
+                            <span class="navbar-toggler-icon"></span> 
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarMain">
+                    <div className={`${navbarToggle ? 'collapse' : ''} navbar-collapse`} id="navbarMain">
                         <ul className="navbar-nav mr-auto">
                             {isAuthenticated ? (
                                 <li className="nav-item">

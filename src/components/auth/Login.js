@@ -9,7 +9,8 @@ import Alert from '../utilities/Alert';
 class Login extends Component {
     state={
         email:'',
-        password:''
+        password:'',
+        showAlert:true
     }
 
     onChange=(e)=>{
@@ -29,17 +30,26 @@ class Login extends Component {
             }
         )
         .then(()=> this.props.history.push('/dashboard'))
-        .catch(error => notifyUser('Invalid User Credentials','error'));
+        .catch(error => {
+            notifyUser('Invalid User Credentials','error')
+            setTimeout(() => {
+                this.setState({
+                    showAlert:!this.state.showAlert,
+                })
+                notifyUser(null,null)
+            }, 2000);
+        });
     }
 
     render() {
         const {message,messageType} = this.props.notify;
+        const {showAlert} = this.state;
         return (
             <div className="row">
                 <div className="col-md-6 mx-auto">
                     <div className="card">
                         <div className="card-body">
-                            {message ? (
+                            {(message && showAlert) ? (
                                 <Alert message={message} messageType={messageType}/>
                             ):null}
                             <h1 className="text-center pb-4 pt-3">

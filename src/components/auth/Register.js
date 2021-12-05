@@ -9,7 +9,8 @@ import Alert from '../utilities/Alert';
 class Register extends Component {
     state={
         email:'',
-        password:''
+        password:'',
+        showAlert:true
     }
 
     componentWillMount() {
@@ -37,17 +38,26 @@ class Register extends Component {
             }
         )
         .then(()=> this.props.history.push('/dashboard'))
-        .catch(error => notifyUser('User Already Registered','error'));
+        .catch(error => {
+            notifyUser('User Already Registered','error');
+            setTimeout(() => {
+                this.setState({
+                    showAlert:!this.state.showAlert,
+                })
+                notifyUser(null,null)
+            }, 2000);
+        });
     }
-
+    
     render() {
         const {message,messageType} = this.props.notify;
+        const {showAlert} = this.state;
         return (
             <div className="row">
                 <div className="col-md-6 mx-auto">
                     <div className="card">
                         <div className="card-body">
-                            {message ? (
+                            {(message && showAlert) ? (
                                 <Alert message={message} messageType={messageType}/>
                             ):null}
                             <h1 className="text-center pb-4 pt-3">

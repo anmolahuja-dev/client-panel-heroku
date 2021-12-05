@@ -24,6 +24,18 @@
     background-repeat: no-repeat;
 
 }
+@media screen and (max-width: 600px) {
+    .main{
+        background-image: none;
+    }
+    .section2{
+        background-image: none;
+    }
+    .section3{
+        background-image: none;
+    }
+}
+
 .footer {
     background-color: #f1f1f1;
 }

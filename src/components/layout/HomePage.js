@@ -7,8 +7,8 @@ export default class HomePage extends Component {
             <>
             <div className="container  text-center main">
                 <div className="row " >
-                    <div className="col-md-5"></div>
-                    <div className="col-md-7 mt-3 ps-5 pe-0">
+                    <div className="col-sm-0 col-md-5"></div>
+                    <div className="col-sm-12 col-md-7 mt-3 ps-md-5 pe-md-0">
                         <h1 style={{fontFamily:"'Anton', sans-serif", fontSize:"100px"}}>
                         <span className="text-primary">CLIENT</span> PANEL</h1>
                         <p className="lead mainlead">An Application that lets you keep record of all the transactions that a client owes you</p>
@@ -16,9 +16,9 @@ export default class HomePage extends Component {
                     </div>
                 </div>
             </div>
-            <div className="container section2" id="sec2">
+            <div className="container text-center section2" id="sec2">
                 <div className="row">
-                    <div className="col-md-7 mt-5">
+                    <div className="col-sm-12 col-md-7 mt-5">
                         <h3 style={{fontFamily:" 'Bebas Neue', sans-serif", fontSize:"100px" }}><span className="text-primary">ADD/EDIT</span> CLIENTS</h3>
                         <p className="lead ">
                             Only Authorized User Can Add and Edit Clients Data.<br/>
@@ -27,12 +27,13 @@ export default class HomePage extends Component {
                             The Information Added will be saved in a secure server powered by Google Firebase.
                         </p>
                     </div>
+                    <div className="col-sm-0 col-md-5"></div>
                 </div>
             </div>
-            <div className="container section3 mt-5" id="sec3">
+            <div className="container section3 text-center mt-5" id="sec3">
                 <div className="row">
-                    <div className="col-md-5"></div>
-                    <div className="col-md-7 mt-5 pe-0 ps-5">
+                    <div className="col-sm-0 col-md-5"></div>
+                    <div className="col-sm-12 col-md-7 mt-5 pe-md-0 ps-md-5">
                         <h3 style={{fontFamily:" 'Bebas Neue', sans-serif", fontSize:"100px" }}>Application <span className="text-primary">Settings</span></h3>
                         <p className="lead ">
                             Authorized User Can also change application settings like <br /> disabling Balance Edit<br/> Stop Further Registrations to the organization
