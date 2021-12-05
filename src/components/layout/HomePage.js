@@ -34,9 +34,9 @@ export default class HomePage extends Component {
                 <div className="row">
                     <div className="col-sm-0 col-md-5"></div>
                     <div className="col-sm-12 col-md-7 mt-5 pe-md-0 ps-md-5">
-                        <h3 style={{fontFamily:" 'Bebas Neue', sans-serif", fontSize:"100px" }}>Application <span className="text-primary">Settings</span></h3>
+                        <h3 style={{fontFamily:" 'Bebas Neue', sans-serif", fontSize:"100px" }}>Application <span className="text-primary">Security</span></h3>
                         <p className="lead ">
-                            Authorized User Can also change application settings like <br /> disabling Balance Edit<br/> Stop Further Registrations to the organization
+                            Authorized User can change application settings like <br /> disabling Balance Edit<br/> Stop Further Registrations to the organization for securing access to data <br /> All Client's data is stored on firebase servers powered by google
                         </p>
                     </div>
                 </div>
