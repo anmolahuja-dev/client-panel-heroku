@@ -4,6 +4,7 @@ import {
     ALLOW_REGISTRATION
 } from '../actions/types';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function(state={},action){
     switch(action.type){
         case DISABLE_BALANCE_ON_ADD:

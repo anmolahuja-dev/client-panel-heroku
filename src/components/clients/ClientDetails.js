@@ -109,11 +109,11 @@ class ClientDetails extends Component {
                                     <h3 className="pull-end">
                                         Balance:<span className={classNames({
                                             'text-danger':client.balance > 0,
-                                            'text-success':client.balance==0
+                                            'text-success':client.balance===0
                                         })}> ${parseFloat(client.balance).toFixed(2)} </span>
                                         {' '}
                                         <small>
-                                            <a href="#" onClick={()=> this.setState({
+                                            <a href="/" onClick={()=> this.setState({
                                                 showBalanceUpdate:!this.state.showBalanceUpdate
                                             })}>
                                                 <i className="fas fa-pencil-alt"></i>   

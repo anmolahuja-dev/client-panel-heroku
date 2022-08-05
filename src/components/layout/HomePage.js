@@ -52,7 +52,7 @@ export default class HomePage extends Component {
                         href="#!"
                         role="button"
                         data-mdb-ripple-color="dark"
-                        ><i class="fab fa-facebook-f"></i
+                        ><i className="fab fa-facebook-f"></i
                     ></a>
 
                     <a
@@ -60,7 +60,7 @@ export default class HomePage extends Component {
                         href="#!"
                         role="button"
                         data-mdb-ripple-color="dark"
-                        ><i class="fab fa-twitter"></i
+                        ><i className="fab fa-twitter"></i
                     ></a>
 
                     <a
@@ -68,7 +68,7 @@ export default class HomePage extends Component {
                         href="#!"
                         role="button"
                         data-mdb-ripple-color="dark"
-                        ><i class="fab fa-google"></i
+                        ><i className="fab fa-google"></i
                     ></a>
 
                     <a
@@ -76,7 +76,7 @@ export default class HomePage extends Component {
                         href="#!"
                         role="button"
                         data-mdb-ripple-color="dark"
-                        ><i class="fab fa-instagram"></i
+                        ><i className="fab fa-instagram"></i
                     ></a>
 
                     <a
@@ -84,14 +84,14 @@ export default class HomePage extends Component {
                         href="#!"
                         role="button"
                         data-mdb-ripple-color="dark"
-                        ><i class="fab fa-linkedin"></i
+                        ><i className="fab fa-linkedin"></i
                     ></a>
                     <a
                         className="btn btn-link btn-floating btn-lg text-dark m-1"
                         href="#!"
                         role="button"
                         data-mdb-ripple-color="dark"
-                        ><i class="fab fa-github"></i
+                        ><i className="fab fa-github"></i
                     ></a>
                     </section>
                 </div>

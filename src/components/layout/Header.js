@@ -52,7 +52,7 @@ class Header extends Component {
                         type="button"
                         onClick={this.onNavToggleClick}    
                     >
-                            <span class="navbar-toggler-icon"></span> 
+                            <span className="navbar-toggler-icon"></span> 
                     </button>
                     <div className={`${navbarToggle ? 'collapse' : ''} navbar-collapse`} id="navbarMain">
                         <ul className="navbar-nav mr-auto">
@@ -67,7 +67,7 @@ class Header extends Component {
                         {isAuthenticated ? (
                             <ul className="navbar-nav ms-auto">
                                 <li className="nav-item">
-                                    <a href="#" className="nav-link">
+                                    <a href="/" className="nav-link">
                                         {auth.email }
                                     </a>
                                 </li>
@@ -77,7 +77,7 @@ class Header extends Component {
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a href="#" className="nav-link" onClick={this.onLogOutClick}>
+                                    <a href="/" className="nav-link" onClick={this.onLogOutClick}>
                                         Log Out
                                     </a>
                                 </li>
